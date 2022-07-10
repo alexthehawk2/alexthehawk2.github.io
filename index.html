@@ -30,7 +30,9 @@
       <div class="container flex-wrap insertion d-flex mb-4">
         <div class="card" style="width: 33.33%; height: 150px;">
           <div class="card-body">
-            <h5 id="book1" class="card-title">Book_Name</h5>
+            <div class="align-btn d-flex justify-content-between">
+              <h5 id="book1" class="card-title">Book_Name</h5>
+            </div>
             <h6 id="book1-author" class="card-subtitle mb-2 text-muted">Author_Name</h6>
             <p id="book1-info" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             <!-- <a id="book1-pages" href="#" class="card-link">Number of Pages</a>
@@ -52,7 +54,7 @@
           </ul>
         </div>
       </footer>
-
+      <!--book creation modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -89,6 +91,27 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--book deletion modal-->
+      <div class="modal fade" id="exampleModal-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel-2"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h5>Do you want to delete: </h5>
+            </div>
+            <div class="modal-footer">
+              <form>
+                <button id="rem-btn" type="submit" class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+              </form>
             </div>
           </div>
         </div>
