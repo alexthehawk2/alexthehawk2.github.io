@@ -49,7 +49,10 @@ function userInputValidation(){
 
 function appendNewBooks() {
     for (let i = 1; i <= count; i++) {
-        let newElement = $(`
+        if ((i-1) in delBookArr){
+            continue
+        }else{
+            let newElement = $(`
         <div id="book-${i}" class="card" style="width: 33.33%; height: 150px">
             <div class="card-body">
                 <div class="align-btn d-flex justify-content-between">
@@ -75,6 +78,8 @@ function appendNewBooks() {
         </div>`)
         $(".insertion").append(newElement)
     }
+        }
+        
 }
 //function to get data from localstorage 
 function getFromLocalStore() {
@@ -113,15 +118,26 @@ function bookGen(bookData) {
     }
 }
 bookGen(bookData)
-appendNewBooks()
 
 //displaying function
-
+let delBookArr = []
 function display(dataArr) {
+    for(let i=0;i<bookData.length;i++){
+        let a = JSON.parse(bookData[i])
+        if(a.status ==='hidden'){
+            delBookArr.push(i)
+        }
+    }
+    console.log(delBookArr)
+    appendNewBooks()
     for (let i = 0; i < dataArr.length; i++) {
-        document.getElementById(`bk-${i + 1}`).innerHTML = dataArr[i].name
-        document.getElementById(`bk-${i + 1}-author`).innerHTML = dataArr[i].author
-        document.getElementById(`bk-${i + 1}-info`).innerHTML = dataArr[i].showInfo
+        if(i in delBookArr){
+            continue
+        }else{
+            document.getElementById(`bk-${i + 1}`).innerHTML = dataArr[i].name
+            document.getElementById(`bk-${i + 1}-author`).innerHTML = dataArr[i].author
+            document.getElementById(`bk-${i + 1}-info`).innerHTML = dataArr[i].showInfo
+        }
     }
 }
 display(dataArr)
@@ -132,8 +148,10 @@ let delBookId = null
 function bookDelete() {
     let elem = document.getElementById(`book-${delBookId + 1}`)
     elem.remove()
-    localStorage.count = Number(localStorage.count - 1)
-    localStorage.removeItem(`book-${delBookId+1}`)
+    // localStorage.
+    let delStat = JSON.parse(bookData[delBookId])
+    delStat.status = 'hidden'
+    localStorage.setItem(`book-${delBookId+1}`,JSON.stringify(delStat))
 }
 
 document.querySelectorAll('.delete-btn').forEach(item => {
