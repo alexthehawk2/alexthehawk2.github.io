@@ -32,13 +32,19 @@ function sendToLocalStorage(name, author, isRead, noOfPages) {
     count += 1
     localStorage.setItem('count', count)
 }
+
 function userInputs() {
     let name = document.getElementById('bookName').value;
     let author = document.getElementById('bookAuthor').value;
     let isRead = $('input[type=radio][name=btnradio]:checked').attr('for');
     let noOfPages = document.getElementById('bookNoOfPages').value
-    console.log(isRead)
     sendToLocalStorage(name, author, isRead, noOfPages)
+}
+function userInputValidation(){
+    let form = $('form')[0].checkValidity()
+    if(form){
+        userInputs()
+    }
 }
 
 function appendNewBooks() {
@@ -127,7 +133,7 @@ function bookDelete() {
     let elem = document.getElementById(`book-${delBookId + 1}`)
     elem.remove()
     localStorage.count = Number(localStorage.count - 1)
-    localStorage.removeItem(`book-${delBookId}`)
+    localStorage.removeItem(`book-${delBookId+1}`)
 }
 
 document.querySelectorAll('.delete-btn').forEach(item => {
@@ -135,12 +141,10 @@ document.querySelectorAll('.delete-btn').forEach(item => {
         let idName = item.id
         idName = idName.substring(8)
         idName = Number(idName - 1)
-        $('#exampleModalLabel-2').replaceWith(`Delete Book: ${dataArr[idName].name}`)
+        document.getElementById("exampleModalLabel-2").innerHTML = `Delete Book: ${dataArr[idName].name}`
         delBookId = idName
-        console.log(delBookId)
         let remBtn = document.getElementById("rem-btn")
         remBtn.addEventListener('click', bookDelete)
 
     })
 })
-
