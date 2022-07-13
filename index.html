@@ -95,6 +95,48 @@
           </div>
         </div>
       </div>
+      <!--Book editing modal-->
+      <div class="modal fade" id="exampleModal-3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editmodal-title">Edit book: </h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="mb-3">
+                  <label for="bookName" class="form-label">Book Name</label>
+                  <input type="text" class="form-control" id="bookName-2" required>
+                </div>
+                <div class="mb-3">
+                  <label for="bookAuthor" class="form-label">Author Name</label>
+                  <input type="text" class="form-control" id="bookAuthor-2" required>
+                </div>
+                <div class="mb-3">
+                  <label for="bookNoOfPages" class="form-label">How many pages ? </label>
+                  <input type="number" class="form-control" id="bookNoOfPages-2" required>
+                </div>
+                <div class="mb-1">
+                  <label for="bookNoOfPages" class="form-label">Have you read it? </label>
+                  <div class="btn-group" role="group-2">
+                    <input type="radio" for="true" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" required>
+                    <label class="btn btn-outline-primary" for="btnradio3">Yes</label>
+                  
+                    <input type="radio" for="false" class="btn-check" name="btnradio" id="btnradio4" required autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnradio4">No</label>
+                  </div>
+                </div>
+                <button onclick="userInputValidationForEdit()" id="create-book" type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
       <!--book deletion modal-->
       <div class="modal fade" id="exampleModal-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
